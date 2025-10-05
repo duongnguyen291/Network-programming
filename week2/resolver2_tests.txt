@@ -1,0 +1,31 @@
+# Lines starting with # are comments and will be ignored by the test harness (we will skip them manually)
+# Basic domains
+google.com
+www.google.com
+example.com
+# Non-existent domains
+nonexistent-sub-domain-xyz-abc.example
+something.invalid
+# Public IPv4 with reverse
+8.8.8.8
+142.250.199.14
+# Invalid IPv4 formats
+1.2.3
+256.0.0.1
+# Special / private IPv4
+127.0.0.1
+10.0.0.1
+192.168.1.1
+169.254.1.1
+224.0.0.1
+255.255.255.255
+# IPv6 addresses
+::1
+2001:4860:4860::8888
+fe80::1
+ff02::1
+# Invalid IPv6
+2001:::1
+::zzzz
+# Mixed line multi tokens
+google.com 8.8.8.8 ::1 invalid..ip 1.2.3
