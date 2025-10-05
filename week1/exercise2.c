@@ -76,6 +76,8 @@ ScoreBoard* loadBoardFromFile(const char *filename) {
     }
     ScoreBoard *b = calloc(1, sizeof(ScoreBoard));
     char line[LINE_LEN];
+    int loadedStudents = 0;
+    
     while (fgets(line, sizeof line, f)) {
         trim(line);
         if (strncmp(line, "SubjectID|", 10)==0) {
@@ -89,6 +91,12 @@ ScoreBoard* loadBoardFromFile(const char *filename) {
         } else if (strncmp(line, "StudentCount|", 13)==0) {
             b->studentCount = atoi(line+13);
         } else if (line[0]=='S' && line[1]=='|') {
+            // Check if we've already loaded the maximum number of students
+            if (loadedStudents >= b->studentCount) {
+                printf("Warning: File contains more students than declared count (%d). Skipping excess students.\n", b->studentCount);
+                break;
+            }
+            
             Student *s = calloc(1, sizeof(Student));
             char prog[16], fin[16], grd[8];
             sscanf(line, "S|%15[^|]|%63[^|]|%63[^|]|%15[^|]|%15[^|]|%7[^|]|",
@@ -98,6 +106,7 @@ ScoreBoard* loadBoardFromFile(const char *filename) {
             s->grade = grd[0];
             s->next = b->students;
             b->students = s;
+            loadedStudents++;
         }
     }
     fclose(f);
@@ -128,7 +137,7 @@ void saveBoardToFile(ScoreBoard *b) {
 void addBoard() {
     do {
         char filename[128];
-        printf("Enter filename to load board: ");
+        printf("Enter filename to load board (ex: IT4062_20171.txt): ");
         fgets(filename, sizeof filename, stdin); trim(filename);
         loadBoardFromFile(filename);
         puts("Board loaded into system.");
@@ -142,6 +151,19 @@ void addStudent() {
         printf("Enter semester: "); fgets(sem,sizeof sem,stdin); trim(sem);
         ScoreBoard *b = findBoard(subj,sem);
         if (!b) { puts("Board not found."); continue; }
+        
+        // Count current students
+        int currentCount = 0;
+        for (Student *s = b->students; s; s = s->next) {
+            currentCount++;
+        }
+        
+        // Check if adding student would exceed the limit
+        if (currentCount >= b->studentCount) {
+            printf("Cannot add more students. Maximum capacity (%d) reached.\n", b->studentCount);
+            continue;
+        }
+        
         Student *s = calloc(1,sizeof(Student));
         printf("Enter student ID: "); fgets(s->id,sizeof s->id,stdin); trim(s->id);
         printf("Enter first name: "); fgets(s->first,sizeof s->first,stdin); trim(s->first);
