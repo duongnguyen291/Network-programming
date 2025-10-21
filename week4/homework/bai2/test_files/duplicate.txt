@@ -1,0 +1,4 @@
+This is a duplicate test file.
+It should cause "File already exists" error when sent twice.
+This file is used to test error handling.
+End of duplicate test file.

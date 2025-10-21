@@ -1,0 +1,12 @@
+Data file for testing.
+This file contains test data.
+Line 1: Testing
+Line 2: File transfer
+Line 3: Application
+Line 4: TCP socket
+Line 5: Network programming
+Line 6: IT4062E
+Line 7: Practical exercise
+Line 8: File handling
+Line 9: Error checking
+Line 10: Success

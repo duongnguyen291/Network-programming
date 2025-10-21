@@ -1,0 +1,5 @@
+Sample file for testing file transfer application.
+This file contains various content to test the transfer functionality.
+Testing different file types and sizes.
+The application should handle this file correctly.
+End of sample file.

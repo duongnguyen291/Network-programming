@@ -1,0 +1,10 @@
+This is a test file for file transfer.
+Line 2: Testing file transfer functionality.
+Line 3: This file contains multiple lines.
+Line 4: Testing binary data transfer.
+Line 5: File transfer over TCP socket.
+Line 6: Testing large file handling.
+Line 7: This is a comprehensive test.
+Line 8: Testing error handling.
+Line 9: Testing file size validation.
+Line 10: End of test file.
