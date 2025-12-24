@@ -1,0 +1,6 @@
+1
+3
+test_message.txt
+3
+/home/duong/Downloads/github/Network-programming/week7/ex1/test_client.sh: line 9: syntax error near unexpected token `|'
+/home/duong/Downloads/github/Network-programming/week7/ex1/test_client.sh: line 9: `| ./client 127.0.0.1 5500'

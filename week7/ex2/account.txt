@@ -1,0 +1,11 @@
+# Sample account file for login/logout system
+# Format: Username Password Status
+# Status: 0 = locked, 1 = unlocked
+
+admin admin123 1
+user1 pass123 1
+user2 pass456 1
+test test 1
+alice alice123 1
+bob bob456 1
+locked_user password 0
